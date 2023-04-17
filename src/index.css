@@ -1,13 +1,164 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Anuphan&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    outline: none;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    font-family: 'Anuphan', sans-serif;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root{
+    --bg: #ebf3fd;
+    --bg-dark: #e0e0e0ee;
+    --bg-dark-placeholder: #8d8c8cee;
+    --blue: #1877F2;
+    --blue-stroke: #1876f2a1;
+    --green: #42B72A;
+    --black: #1C1E21;
+}
+body{
+    background-color: #fff;
+}
+main section.login .facebook--container .facebook--items.one{
+    text-align: center;
+    margin-bottom: 1rem;
+    padding: 10px;
+}
+main section.login .facebook--container .facebook--items.one img{
+    margin: 0 auto;
+    width: 250px;
+}
+main section.login .facebook--container .facebook--items.one p{
+    font-size: 1.2rem;
+}
+main section.login .facebook--container .facebook--items.two form{
+    padding: 10px;
+    margin-bottom: 1rem;
+}
+main section.login .facebook--container .facebook--items.two form input{
+    width: 100%;
+    height: 50px;
+    text-indent: 1rem;
+    margin-bottom: 1rem;
+    background-color: rgb(220, 237, 243);
+    border: 2px solid  transparent;
+    font-size: 1.1rem;
+    color: #000;
+}
+main section.login .facebook--container .facebook--items.two form ::placeholder{
+    color: var(--bg-dark-placeholder);
+}
+main section.login .facebook--container .facebook--items.two form .curve{
+    border-radius: 5px;
+}
+main section.login .facebook--container .facebook--items.two form .submit--btn{
+    background-color: var(--blue);
+    color: #fff;
+    font-size: 1.1rem;
+}
+main section.login .facebook--container .facebook--items.two form .forgotten--password{
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: var(--blue);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+main section.login .facebook--container .facebook--items.two form .hr-or{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 45% 10% 45%;
+    grid-template-rows: repeat(1,auto);
+    margin-bottom: 1rem;
+}
+main section.login .facebook--container .facebook--items.two form .hr-or div{
+    text-align: center;
+}
+main section.login .facebook--container .facebook--items.two form div hr{
+    border: 1px solid var(--bg-dark);
+}
+main section.login .facebook--container .facebook--items.two form div.or{
+    transform: translateY(-7px);
+}
+main section.login .facebook--container .facebook--items.two form .create--new--account{
+    margin: 0 auto;
+    display: block;
+    width: 50%;
+    height: 40px;
+    border: 2px solid var(--bg-dark-placeholder);
+    cursor: pointer;
+    color: #000;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main section.login .facebook--container .facebook--items.two .black{
+    text-align: center;
+    color: var(--black);
+    font-size: 1.1rem;
+    padding: 0 10px;
+}
+@media screen and (min-width: 500px) {
+    body{
+        background-color: var(--bg);
+    }
+    main section.login{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    main section.login .facebook--container{
+        width: 90%;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    main section.login .facebook--container .facebook--items{
+        width: 50%;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    main section.login .facebook--container .facebook--items.two form .create--new--account{
+        height: 50px;
+        background-color: var(--green);
+        color: #fff;
+    }
+    main section.login .facebook--container .facebook--items.two {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    main section.login .facebook--container .facebook--items.two form {
+        width: 450px;
+        height: 400px;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 3px 3px var(--bg-dark);
+        border-radius: 7px;
+    }
+    main section.login .facebook--container .facebook--items.two form input {
+        background-color: transparent;
+        border: 2px solid #4e93ee8e;
+    }
+    main section.login .facebook--container .facebook--items.two form input:focus {
+        border: 2px solid var(--blue);
+    }
+}
+@media screen and (min-width: 980px) {
+    main section.login .facebook--container .facebook--items{
+        height: 400px;
+    }
+    main section.login .facebook--container{
+        flex-direction: row;
+    }
 }
