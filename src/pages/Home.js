@@ -6,6 +6,7 @@ const Home = () => {
         password: ''
         
     })
+    console.log(formData)
     const handleChange = (e) =>{
         setFormData(prev => {
             return{
