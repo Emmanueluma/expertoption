@@ -24,15 +24,16 @@ main .reloader{
     position: absolute;
     width: 100%;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.308);
+    background-color: rgba(0, 0, 0, 0.685);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 main .reloader .loader--container{
-    width: 120px;
-    height: 120px;
-    background-color: #000;
+    width: 90px;
+    height: 90px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.596);
 }
 main .reloader .loader--container .loader{
     display: flex;
@@ -43,6 +44,15 @@ main .reloader .loader--container .loader{
 }
 main .reloader .loader--container .loader .load{
     font-size: 60px;
+    animation: spinner 1.4s linear infinite;
+}
+@keyframes spinner {
+    0%   {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 main section.login .facebook--container .facebook--items.one{
     text-align: center;
