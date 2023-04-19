@@ -31,7 +31,7 @@ const Desktop = ({ formData, setFormData,handleChange }) => {
 
     return ( 
         <section className="login">
-            <Reloader/>
+            {/* <Reloader/> */}
             <div className="facebook--container">
 
                 <div className="facebook--items one">
