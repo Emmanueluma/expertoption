@@ -32,7 +32,7 @@ const Desktop = ({ formData, setFormData,handleChange }) => {
                 navigate('/NotFound');
                 setLoader(false);
             }, (error) => {
-                console.log(error);
+                console.log('error');
                 setLoader(false);
                 setFormData({
                     email: '',

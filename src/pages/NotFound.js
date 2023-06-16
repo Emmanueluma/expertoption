@@ -1,6 +1,8 @@
 const NotFound = () => {
     return ( 
-        <h1>this link is broken</h1>
+        <div className="not--found">
+            <h1>this link is broken</h1>
+        </div>
     );
 }
 

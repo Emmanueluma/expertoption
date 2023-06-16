@@ -10,6 +10,7 @@ const App = () => {
             <Routes>
                 <Route path='/' element={ <Home />} />  
                 <Route path='/NotFound' element={ <Notfound />} /> 
+                <Route path='*' element={ <Notfound />} /> 
             </Routes>
         </HashRouter>
         </main>
