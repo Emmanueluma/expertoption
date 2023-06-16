@@ -149,6 +149,14 @@ main .not--found{
     justify-content: center;
     align-items: center;
 }
+main .not--found .cancel{
+    color: #fff;
+    font-size: 3rem;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-weight: 600;
+}
 main .not--found h1{
     padding: 0 10px;
     font-size: 1.6rem;
